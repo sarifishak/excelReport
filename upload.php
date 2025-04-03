@@ -7,8 +7,9 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 // Check if file already exists
 if (file_exists($target_file)) {
-  echo "Sorry, file already exists.";
-  $uploadOk = 0;
+  //echo "Sorry, file already exists.";
+  //$uploadOk = 0;
+  unlink($target_file);
 }
 
 // Check file size
