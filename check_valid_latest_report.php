@@ -51,8 +51,8 @@ if(!$check_failed) {
 if($check_failed) {
     echo $failed_message . PHP_EOL;
 } else {
-    echo 'So far so good. Next is to process the excel file.' . PHP_EOL;
-    //header("Location: uploadLatestReport.php");
+    //echo 'So far so good. Next is to process the excel file.' . PHP_EOL;
+    header("Location: process_excelfile.php");
     die();
 }
 
@@ -67,3 +67,8 @@ for ($row = 1; $row <= 4; ++$row) {
     echo '</tr>' . PHP_EOL;
 }
 echo '</table>' . PHP_EOL;
+
+?>
+<form action="createReport.php" method="post" enctype="multipart/form-data">
+  <input type="submit" value="Restart" name="submit">
+</form>

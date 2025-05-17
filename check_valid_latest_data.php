@@ -78,3 +78,7 @@ for ($row = 1; $row <= 4; ++$row) {
     echo '</tr>' . PHP_EOL;
 }
 echo '</table>' . PHP_EOL;
+?>
+<form action="createReport.php" method="post" enctype="multipart/form-data">
+  <input type="submit" value="Restart" name="submit">
+</form>
