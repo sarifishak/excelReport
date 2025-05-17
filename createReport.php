@@ -3,7 +3,7 @@
 <body>
 
 <form action="upload.php" method="post" enctype="multipart/form-data">
-  Select image to upload:
+  Select latest excel data to upload:
   <input type="file" name="fileToUpload" id="fileToUpload">
   <input type="submit" value="Upload Now" name="submit">
 </form>
