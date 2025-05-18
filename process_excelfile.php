@@ -19,9 +19,16 @@ $latestDataHighestRow = $latestDataWorksheet->getHighestDataRow()-1; // e.g. 10
 $latestDataHighestColumn = $latestDataWorksheet->getHighestDataColumn(); // e.g 'F'
 $latestDataHighestColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($latestDataHighestColumn); // e.g. 5
 
+for ($row = 1; $row <= $latestDataHighestRow; ++$row) {
 
+    for ($col = 2; $col <= $latestDataHighestColumnIndex; ++$col) {
+        $value = $latestDataWorksheet->getCell([$col, $row])->getValue();
+        $newReportActiveWorksheet->setCellValue([$col-1, $row], $value);
+    }
 
-$newReportActiveWorksheet->setCellValue('A1', 'Hello World !');
+}
+
+$newReportActiveWorksheet->setCellValue([1, 1], 'Date');
 
 $newReportWriter = new Xlsx($newReportSpreadsheet);
 $newReportWriter->save('uploads/newReport.xlsx');
