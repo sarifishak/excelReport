@@ -122,7 +122,57 @@ for ($row = 1; $row <= $latestDataHighestRow; ++$row) {
     }
 }
 
-// display the data in newReportActiveWorksheet
+// set the cell format date for column 1
+$dateFormat = 'dd/mm/yyyy'; // You can modify this format as needed
+$newReportActiveWorksheet->getStyle('A2:A'.$latestDataHighestRow)
+    ->getNumberFormat()
+    ->setFormatCode($dateFormat);
+$newReportActiveWorksheet->getColumnDimension('A')->setWidth(12);
+$newReportActiveWorksheet->getColumnDimension('B')->setWidth(30);
+$newReportActiveWorksheet->getColumnDimension('C')->setWidth(12);
+$newReportActiveWorksheet->getColumnDimension('D')->setWidth(13);
+$newReportActiveWorksheet->getColumnDimension('E')->setWidth(21);
+$newReportActiveWorksheet->getColumnDimension('F')->setWidth(13);
+$newReportActiveWorksheet->getColumnDimension('G')->setWidth(22);
+$newReportActiveWorksheet->getColumnDimension('H')->setWidth(22);
+$newReportActiveWorksheet->getColumnDimension('J')->setWidth(10);
+$newReportActiveWorksheet->getColumnDimension('K')->setWidth(12);
+$newReportActiveWorksheet->getColumnDimension('L')->setWidth(22);
+$newReportActiveWorksheet->getColumnDimension('Q')->setWidth(30);
+
+$dateFormat = 'dd/mm'; // You can modify this format as needed
+$newReportActiveWorksheet->getStyle('N2:N'.$latestDataHighestRow)
+    ->getNumberFormat()
+    ->setFormatCode($dateFormat);
+$newReportActiveWorksheet->getStyle('O2:O'.$latestDataHighestRow)
+        ->getNumberFormat()
+        ->setFormatCode($dateFormat);
+
+//#,##0.0000;-#,##0.00
+$newReportActiveWorksheet->getStyle('J2:J'.$latestDataHighestRow)
+        ->getNumberFormat()
+        ->setFormatCode('#,##0.0000;-#,##0.00');
+//#,##0.00;(#,##0.00)
+$newReportActiveWorksheet->getStyle('K2:K'.$latestDataHighestRow)
+        ->getNumberFormat()
+        ->setFormatCode('#,##0.00;(#,##0.00)');
+
+$newReportActiveWorksheet->getStyle('A1:Q1')
+        ->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$newReportActiveWorksheet->getStyle('A1:Q1')
+        ->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+$newReportActiveWorksheet->getStyle('A1:Q1')
+    ->getFill()->getStartColor()->setARGB('DAEBE1');//#daebe1
+$newReportActiveWorksheet->getStyle('A1:Q1')
+    ->getBorders()->getTop()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+$newReportActiveWorksheet->getStyle('A1:Q1')
+    ->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+$newReportActiveWorksheet->getStyle('A1:Q1')
+    ->getBorders()->getLeft()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);    
+$newReportActiveWorksheet->getStyle('A1:Q1')
+    ->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);    
+
+    // display the data in newReportActiveWorksheet
 // echo '<table>' . "\n";
 // for ($row = 1; $row <= $latestDataHighestRow; ++$row) {
 //     echo '<tr>' . PHP_EOL;
